@@ -137,6 +137,10 @@ small, .small {
 b, .b, strong, .strong {
   font-weight: 600; }
 
+canvas {
+  width: 100% !important;
+}
+
 .page-pretitle {
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -910,11 +914,14 @@ body {
   border-top: 1px solid #eee;
   padding: 15px;
   background: #ffffff;
-  position: absolute;
+  position: fixed;
+  bottom: 0;
   width: 100%; }
   .footer .container, .footer .container-fluid {
     display: flex;
     align-items: center; }
+
+
 
 /*    sidebar minimized   */
 @media screen and (min-width: 991px) {
