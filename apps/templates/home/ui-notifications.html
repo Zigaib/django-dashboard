@@ -117,6 +117,8 @@
 			var state = $('#notify_state option:selected').val();
 			var style = $('#notify_style option:selected').val();
 			var content = {};
+			console.log('notify');
+			console.log(placementFrom, placementAlign, state, style);
 
 			content.message = 'Turning standard Bootstrap alerts into "notify" like notifications';
 			content.title = 'Bootstrap notify';
@@ -125,9 +127,7 @@
 			} else {
 				content.icon = 'none';
 			}
-			content.url = 'index.html';
-			content.target = '_blank';
-
+			
 			$.notify(content,{
 				type: state,
 				placement: {
@@ -135,8 +135,9 @@
 					align: placementAlign
 				},
 				time: 1000,
-				delay: 0,
+				delay: 4000,
 			});
+			
 		});
 	</script>
 

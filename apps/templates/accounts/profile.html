@@ -1,0 +1,205 @@
+{% extends "layouts/base_v2.html" %}
+
+{% block title %} Login {% endblock title %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="page-inner">
+	<h4 class="page-title">Perfil do Usuário </h4>
+	<form action="{% url 'profile' %}" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<div class="row">
+			<div class="col-md-8">
+				<div class="card card-with-nav">
+					<div class="card-header">
+						<div class="row row-nav-line">
+							<ul class="nav nav-tabs nav-line nav-color-secondary" role="tablist">
+								<li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#user"
+										role="tab" aria-selected="true">Usuário</a> </li>
+							</ul>
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="row mt-3">
+							<div class="col-md-3">
+								<div class="form-group form-group-default">
+									<label>Nome</label>
+									{{user_form.first_name}}
+								</div>
+								<small id="errolHelp" class="form-text text-muted text-danger"
+									style="margin-left: 12px;">{{user_form.first_name.errors | striptags}}</small>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group form-group-default">
+									<label>Sobrenome</label>
+									{{user_form.last_name}}
+								</div>
+								<small id="errolHelp" class="form-text text-muted text-danger"
+									style="margin-left: 12px;">{{user_form.last_name.errors | striptags}}</small>
+							</div>
+							<div class="col-md-5">
+								<div class="form-group form-group-default">
+									<label>Email</label>
+									{{user_form.email}}
+								</div>
+								<small id="errolHelp" class="form-text text-muted text-danger"
+									style="margin-left: 12px;">{{user_form.email.errors | striptags}}</small>
+							</div>
+						</div>
+						<div class="row mt-3">
+							<div class="col-md-4">
+								<div class="form-group form-group-default">
+									<label>Data Nascimento</label>
+									{{profile_form.data_nascimento}}
+								</div>
+								<small id="erroHelp" class="form-text text-muted text-danger"
+									style="margin-left: 12px;">{{profile_form.data_nascimento.errors|striptags}}</small>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group form-group-default">
+									<label>Sexo</label>
+									{{profile_form.sexo}}
+								</div>
+								<small id="errolHelp" class="form-text text-muted text-danger"
+									style="margin-left: 12px;">{{profile_form.sexo.errors | striptags}}</small>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group form-group-default">
+									<label>Telefone</label>
+									{{profile_form.telefone}}
+								</div>
+								<small id="errolHelp" class="form-text text-muted text-danger"
+									style="margin-left: 12px;">{{profile_form.telefone.errors | striptags}}</small>
+							</div>
+						</div>
+						<div class="row mt-3">
+							<div class="col-md-6">
+								<div class="form-group form-group-default">
+									<label>Endereço</label>
+									{{profile_form.endereco}}
+								</div>
+								<small id="errolHelp" class="form-text text-muted text-danger"
+									style="margin-left: 12px;">{{profile_form.endereco.errors | striptags}}</small>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group form-group-default">
+									<label>Cidade</label>
+									{{profile_form.cidade}}
+								</div>
+								<small id="errolHelp" class="form-text text-muted text-danger"
+									style="margin-left: 12px;">{{profile_form.cidade.errors | striptags}}</small>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group form-group-default">
+									<label>UF</label>
+									{{profile_form.estado}}
+								</div>
+								<small id="errolHelp" class="form-text text-muted text-danger"
+									style="margin-left: 12px;">{{profile_form.estado.errors | striptags}}</small>
+							</div>
+						</div>
+						<div class="row mt-3 mb-1">
+							<div class="col-md-12">
+								<div class="form-group form-group-default">
+									<label>Sobre:</label>
+									{{profile_form.sobre}}
+								</div>
+								<small id="errolHelp" class="form-text text-muted text-danger"
+									style="margin-left: 12px;">{{profile_form.sobre.errors | striptags}}</small>
+							</div>
+						</div>
+						<div class="text-right mt-3 mb-3">
+							<button class="btn btn-success">Salvar</button>
+							<button class="btn btn-danger">Limpar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card card-profile">
+					<div class="card-header"
+						style="background-image: url('https://appsrv1-147a1.kxcdn.com/atlantis-pro/img/blogpost.jpg')">
+						<div class="profile-picture">
+							<div class="avatar avatar-xl input-file input-file-image">
+								<input type="file" class="form-control form-control-file" id="avatar" name="avatar"
+									accept="image/*">
+								<label for="avatar" class="label-input-file btn" style="display: contents;">
+									<img src="{{user.profile.avatar.url}}" alt="..."
+										class="img-upload-preview avatar-img rounded-circle label-input-file">
+								</label>
+
+							</div>
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="user-profile text-center">
+							<div class="name">
+								{{user.username}}
+							</div>
+							<div class="form-group form-group-floating"> 
+								<div class="job">
+									Cargo
+								</div>
+								{{profile_form.cargo}}
+								<small id="errolHelp" class="form-text text-muted text-danger"
+									style="margin-left: 12px;">{{profile_form.cargo.errors | striptags}}</small>
+							</div>
+							<div class="desc">Who hates loneliness</div>
+
+							<div class="view-profile">
+								<a href="#" class="btn btn-secondary btn-block" style="display: unset;">Ver
+									Lançamentos</a>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer">
+						<div class="row user-stats text-center">
+							<div class="col">
+								<div class="number">125</div>
+								<div class="title">Despesas</div>
+							</div>
+							<div class="col">
+								<div class="number">25K</div>
+								<div class="title">Receitas</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+{% endblock content %}
+
+
+
+<!-- Specific JS goes HERE -->
+{% block javascripts %}
+{% if messages %}
+{% for message in messages %}
+
+<script>
+	swal({
+		title: "{{message.title}}",
+		text: "{{ message.message }}",
+		icon: "{{message.tags}}",
+		timeout: 5000,
+		buttons: {
+			confirm: {
+				text: "Ok",
+				value: true,
+				visible: true,
+				className: "btn btn-success",
+				closeModal: true
+			}
+		}
+
+	});
+</script>
+{% endfor %}
+{% endif %}
+{% endblock javascripts %}
