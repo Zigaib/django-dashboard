@@ -1,4 +1,4 @@
-{% extends "layouts/base_v2.html" %}
+{% extends "layouts/base.html" %}
 
 {% block title %} Dashboard {% endblock %} 
 
@@ -13,10 +13,11 @@
 				<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 					<div>
 						<h2 class="text-white pb-2 fw-bold">Dashboard</h2>
-						<h5 class="text-white op-7 mb-2">Dashboard Central</h5>
+						<h5 class="text-white op-7 mb-2">Free Bootstrap 4 Admin Dashboard</h5>
 					</div>
 					<div class="ml-md-auto py-2 py-md-0">
-						<a href="#" class="btn btn-white btn-border btn-round mr-2">Administrar</a>
+						<a href="#" class="btn btn-white btn-border btn-round mr-2">Manage</a>
+						<a href="#" class="btn btn-secondary btn-round">Add Customer</a>
 					</div>
 				</div>
 			</div>
@@ -527,6 +528,10 @@
 
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
+
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<!-- <script src="/static/assets/js/setting-demo.js"></script>
+	<script src="/static/assets/js/demo.js"></script> -->
 
 	<script>
 		Circles.create({

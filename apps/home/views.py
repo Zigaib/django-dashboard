@@ -21,7 +21,7 @@ def index(request):
 def index_v2(request):
     context = {'segment': 'index'}
 
-    html_template = loader.get_template('home/index_v2.html')
+    html_template = loader.get_template('home/index_ori.html')
     return HttpResponse(html_template.render(context, request))
 
 
