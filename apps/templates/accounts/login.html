@@ -1,5 +1,5 @@
 
-{% extends "layouts/base.html" %}
+{% extends "layouts/base_v2.html" %}
 
 {% block title %} Login {% endblock title %}
 
@@ -21,7 +21,7 @@
                     <i class="flaticon-right-arrow"></i>
                 </li>
                 <li class="nav-item">
-                    <a href="#">Authentication</a>
+                    <a href="#">Autenticação</a>
                 </li>
                 <li class="separator">
                     <i class="flaticon-right-arrow"></i>
@@ -41,21 +41,21 @@
                                 <span class="text-danger">{{ msg | safe }}</span>
                             {% else %}
                             <span>
-                                Add your credentials
+                                Entre com suas credenciais para acessar o sistema.
                             </span>
                             {% endif %}
 
                         </div>
                     </div>
 
-                    <form method="post" action="">
+                    <form method="post" action="" autocomplete="false">
 
                         {% csrf_token %}
 
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 col-lg-4">
-
+                                    <input type="text" class="form-control" name="Userfake" style="display: none;">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
@@ -97,4 +97,6 @@
 {% endblock content %}
 
 <!-- Specific JS goes HERE -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+
+{% endblock javascripts %}
