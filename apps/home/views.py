@@ -1,18 +1,28 @@
-# -*- encoding: utf-8 -*-
-"""
-Copyright (c) 2019 - present AppSeed.us
-"""
-
 from django import template
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
+from apps.fluxo_caixa.models import Lancamento, Tipo_Operacao
+from django.db.models import Sum
+
+from datetime import timedelta, date
 
 
 @login_required(login_url="/login/")
 def index(request):
-    context = {'segment': 'index'}
+
+    result = Tipo_Operacao.objects.all()
+
+    lancamento = Lancamento.objects.all()
+    status = {"Entrada": lancamento.filter(tipo__tipo="E").count(), 
+            "Saida": lancamento.filter(tipo__tipo="S").count(),
+            "Total": lancamento.count()}
+
+    valores = Lancamento.objects.filter(tipo__tipo="E", data__gte=date.today()-timedelta(days=7)).aggregate(total=Sum('valor'))
+
+    
+    context = {'segment': 'index', 'result': result, 'status': status, 'valores': valores}
 
     html_template = loader.get_template('home/index.html')
     return HttpResponse(html_template.render(context, request))

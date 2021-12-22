@@ -1,2 +1,2 @@
 run:
-	gunicorn core.wsgi --log-file=- 
+	gunicorn core.wsgi --log-file=- --reload

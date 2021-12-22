@@ -26,9 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Enable the inner home (home)
     'apps.home',
-    'apps.authentication'
+    'apps.authentication',
+    'apps.fluxo_caixa'
 ]
 
 MIDDLEWARE = [
